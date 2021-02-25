@@ -52,7 +52,7 @@ class Article():
         self.author = author
 
 
-    def display_article(self, title, text, author):
+    def display_article(self):
         """
         Affiche un article : son titre, son auteur, son texte
 
@@ -67,24 +67,21 @@ class Article():
         print("-" * (len(self.title) + 8))
         print("")
 
-def write_article(self, title, text, author):
+def write_article ():
     """
     Écriture et enregistrement d'un nouvel article
     """
     if not current_user.can(Permission.WRITE):
         return
 
-    self.author = current_user
+    author = current_user
 
     print("Quel est le titre de l'article ?")
-    self.title = input("> ")
+    title = input("> ")
 
     print("Quel est le contenu de l'article ?")
-    self.text = input("> ")
-
-newarticle=Article('Mathilde', "Je m'appelle Mathilde", 'chloe')
-
-articles.append(newarticle) 
+    text = input("> ")
+    articles.append(Article(title,text,author)) 
 
   # TODO: créer un nouvel Article à partir des données collectées et l'ajouter à la variable `articles`
 
@@ -144,7 +141,7 @@ def display_articles():
         return
 
     # Affiche les articles disponibles et affiche celui sélectionné
-    list_articles("Quel article veux-tu lire ?", lambda article: display_article(article))
+    list_articles("Quel article veux-tu lire ?", lambda article: article.display_article())
 
 def delete_article(article):
     articles.remove(article)
