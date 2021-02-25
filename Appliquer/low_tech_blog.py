@@ -16,8 +16,27 @@ class User:
         return True if permission == Permission.READ else False
 
 # TODO: Ajoute ici les autres classes nécessaires au programme
+class Writer(User):
+    def __init__(self, name: str):
+        self.name = name
+
+    def can(self, permission: "Permission") -> bool:
+        return False if permission == Permission.DELETE else True
+
+class Admin(User):
+    def __init__(self, name: str):
+        self.name = name
+
+    def can(self, permission: "Permission") -> bool:
+        return True
 
 def get_user(name: str) -> User:
+    if name == 'alya': 
+        return Writer(name)
+    elif name == 'chloe':
+        return Admin(name)
+    else : 
+        return User(name)
     """
     :param name: Nom de l'utilisateur pour lequel renvoyer une instance `User`
     :return: instance d'une classe `User` adaptée au niveau de droits de
@@ -26,7 +45,6 @@ def get_user(name: str) -> User:
     # TODO: Compléter cette fonction pour qu'elle renvoie une instance adaptée
     #       au niveau de droits de l'utilisateur passé en paramètre, tel que
     #       renseigné dans la variable USER plus bas
-    return User(name)
 
 def display_article(article):
     """
@@ -168,7 +186,7 @@ if __name__ == '__main__':
         # Récupère la bonne instance de User pour le nom entré
         current_user = get_user(user_name)
 
-        print(f"Salut, {current_user.name} ! Que veux-tu faire aujourd'hui ?")
+        print(f"Salut, {current_user.name} ! Que veux-tu  faire aujourd'hui ?")
 
         # Liste les actions disponibles pour l'utilisateur courant
         # -> celles qui ne nécessitent aucune permission et celles que `current_user` a le droit d'effectuer
