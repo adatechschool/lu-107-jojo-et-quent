@@ -45,21 +45,27 @@ def get_user(name: str) -> User:
     # TODO: Compléter cette fonction pour qu'elle renvoie une instance adaptée
     #       au niveau de droits de l'utilisateur passé en paramètre, tel que
     #       renseigné dans la variable USER plus bas
+class Article():
+    def __init__(self,title,text,author):
+        self.title = title
+        self.text = text
+        self.author = author
 
-def display_article(article):
-    """
-    Affiche un article : son titre, son auteur, son texte
 
-    TODO: cette fonction prend un supposé objet "article" en paramètre pour en faire l'affichage.
-          Les concepts d'encapsulation et d'abstraction imposeraient une autre façon de faire.
-          À vous de corriger !
-    """
-    print("")
-    print("-" * 4 + article.title + "-" * 4)
-    print(f"Auteur : {article.author.name}")
-    print(f"\\n{article.text}\\n")
-    print("-" * (len(article.title) + 8))
-    print("")
+    def display_article():
+        """
+        Affiche un article : son titre, son auteur, son texte
+
+        TODO: cette fonction prend un supposé objet "article" en paramètre pour en faire l'affichage.
+            Les concepts d'encapsulation et d'abstraction imposeraient une autre façon de faire.
+            À vous de corriger !
+        """
+        print("")
+        print("-" * 4 + self.title + "-" * 4)
+        print(f"Auteur : {self.author.name}")
+        print(f"\\n{self.text}\\n")
+        print("-" * (len(self.title) + 8))
+        print("")
 
 def write_article():
     """
@@ -76,7 +82,9 @@ def write_article():
     print("Quel est le contenu de l'article ?")
     text = input("> ")
 
-    # TODO: créer un nouvel Article à partir des données collectées et l'ajouter à la variable `articles`
+newarticle=Article(title,text,author)
+
+articles.append(newarticle)   # TODO: créer un nouvel Article à partir des données collectées et l'ajouter à la variable `articles`
 
 ###############################################################################
 # / FIN DU CODE À COMPLÉTER
