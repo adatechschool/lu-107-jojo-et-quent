@@ -52,7 +52,7 @@ class Article():
         self.author = author
 
 
-    def display_article():
+    def display_article(self, title, text, author):
         """
         Affiche un article : son titre, son auteur, son texte
 
@@ -67,24 +67,26 @@ class Article():
         print("-" * (len(self.title) + 8))
         print("")
 
-def write_article():
+def write_article(self, title, text, author):
     """
     Écriture et enregistrement d'un nouvel article
     """
     if not current_user.can(Permission.WRITE):
         return
 
-    author = current_user
+    self.author = current_user
 
     print("Quel est le titre de l'article ?")
-    title = input("> ")
+    self.title = input("> ")
 
     print("Quel est le contenu de l'article ?")
-    text = input("> ")
+    self.text = input("> ")
 
-newarticle=Article(title,text,author)
+newarticle=Article('Mathilde', "Je m'appelle Mathilde", 'chloe')
 
-articles.append(newarticle)   # TODO: créer un nouvel Article à partir des données collectées et l'ajouter à la variable `articles`
+articles.append(newarticle) 
+
+  # TODO: créer un nouvel Article à partir des données collectées et l'ajouter à la variable `articles`
 
 ###############################################################################
 # / FIN DU CODE À COMPLÉTER
@@ -194,7 +196,7 @@ if __name__ == '__main__':
         # Récupère la bonne instance de User pour le nom entré
         current_user = get_user(user_name)
 
-        print(f"Salut, {current_user.name} ! Que veux-tu  faire aujourd'hui ?")
+        print(f"Salut, {current_user.name} ! Que veux-tu faire aujourd'hui ?")
 
         # Liste les actions disponibles pour l'utilisateur courant
         # -> celles qui ne nécessitent aucune permission et celles que `current_user` a le droit d'effectuer
