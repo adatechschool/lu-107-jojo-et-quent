@@ -15,7 +15,7 @@ class User:
         """ Un utilisateur "lambda" ne peut que lire du contenu """
         return True if permission == Permission.READ else False
 
-# TODO: Ajoute ici les autres classes nécessaires au programme
+# TODO: Ajout des autres classes nécessaires au programme et spécification de leur droit de permission
 class Writer(User):
     def __init__(self, name: str):
         self.name = name
@@ -31,6 +31,7 @@ class Admin(User):
         return True
 
 def get_user(name: str) -> User:
+    # condition selon l'input de l'utilisateur et relier à la bonne instance
     if name == 'alya': 
         return Writer(name)
     elif name == 'chloe':
@@ -45,6 +46,7 @@ def get_user(name: str) -> User:
     # TODO: Compléter cette fonction pour qu'elle renvoie une instance adaptée
     #       au niveau de droits de l'utilisateur passé en paramètre, tel que
     #       renseigné dans la variable USER plus bas
+# création de l'objet Article() avec deux méthodes (initialisation + display_article)
 class Article():
     def __init__(self,title,text,author):
         self.title = title
@@ -81,6 +83,7 @@ def write_article ():
 
     print("Quel est le contenu de l'article ?")
     text = input("> ")
+    # ajout du nouvel article écrit à la liste d'articles
     articles.append(Article(title,text,author)) 
 
   # TODO: créer un nouvel Article à partir des données collectées et l'ajouter à la variable `articles`
